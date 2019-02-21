@@ -4,7 +4,7 @@ import PhotoThumb from './components/PhotoThumb.js';
 import PhotoBrowser from './components/PhotoBrowser.js';
 import Home from './components/Home.js';
 import About from './components/About.js';
-import Favorites from './components/Favorites.js';
+
 import * as cloneDeep from 'lodash/cloneDeep';
 import logo from './logo.svg';
 import './App.css';
@@ -21,9 +21,16 @@ class App extends Component {
 addPhotoToFavorites=(id) =>{
     
     let temp = this.state.favs;
-    
-    temp.push(this.state.photos.find( p => p.id === id));
-    
+    let check = true;
+    temp.forEach((b) => {
+        if(b.id === id){
+            check = false;
+        } 
+    });
+    if (check){
+         temp.push(this.state.photos.find( p => p.id === id));
+    }
+
     this.setState({favs: temp});
     
 }
@@ -57,13 +64,14 @@ this.setState( {photos: copyPhotos } );
     return (
       <div>
        <HeaderApp />
-        <Favorites favs={this.state.favs} />
+        
  <Route path='/' exact component={Home} />
  <Route path='/home' exact component={Home} />
  <Route path='/browse' exact
  render={ (props) =>
  <PhotoBrowser
  photos={this.state.photos}
+favors={this.state.favs}
  updatePhoto={this.updatePhoto}
  addPhotoToFavorites={this.addPhotoToFavorites} /> }
  />
