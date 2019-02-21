@@ -16,7 +16,7 @@ class App extends Component {
  super(props);
  this.state = { photos: [],
                 favs: []
-              };
+              };			  
 }
 addPhotoToFavorites=(id) =>{
     
@@ -32,7 +32,9 @@ addPhotoToFavorites=(id) =>{
     }
 
     this.setState({favs: temp});
-    
+	localStorage.setItem('favourites', JSON.stringify(this.state.favs));
+    console.log("added to local storage");
+	console.log(localStorage.getItem('favourites'));
 }
 updatePhoto = (id, photo) => {
  // Create deep clone of photo array from state.
@@ -49,6 +51,7 @@ this.setState( {photos: copyPhotos } );
 }
     
     async componentDidMount() {
+		
  try {
  const url =
 "http://randyconnolly.com/funwebdev/services/travel/images.php";
@@ -59,7 +62,16 @@ this.setState( {photos: copyPhotos } );
  catch (error) {
  console.error(error);
  }
+ 
+ //https://www.robinwieruch.de/local-storage-react/
+ let localFavourites = localStorage.getItem('favourites');
+if (localFavourites != null){
+	this.setState({favs: JSON.parse(localFavourites)});
+	console.log(JSON.parse(localFavourites));
 }
+}
+
+
   render() {
     return (
       <div>

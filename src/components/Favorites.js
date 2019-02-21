@@ -22,8 +22,10 @@ download = () => {
 	//https://stackoverflow.com/questions/29670703/how-to-use-cors-anywhere-to-reverse-proxy-and-add-cors-headers
 	//https://stuk.github.io/jszip/documentation/examples/downloader.html
 	console.log('download function');
-	let zip = new JSZip();
-	this.getImageUrls(zip);
+	if(!this.props.favs.length <= 0){
+		let zip = new JSZip();
+		this.getImageUrls(zip);
+		}
 	}
 	
 getImageBytes(url){
