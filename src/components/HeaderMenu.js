@@ -4,13 +4,13 @@ const HeaderMenu = function (props) {
  return (
  <nav>
  <Link to='/home'>
- <button>Home</button>
+ <button className="ourButton">Home</button>
  </Link>
  <Link to='/browse'>
- <button>Browse</button>
+ <button className="ourButton">Browse</button>
  </Link>
  <Link to='/about'>
- <button>About</button>
+ <button className="ourButton">About</button>
  </Link>
  </nav>
  );

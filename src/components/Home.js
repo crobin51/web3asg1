@@ -10,10 +10,10 @@ class Home extends React.Component {
  <h3>Upload and Share</h3>
  <p>
  <Link to='/browse'>
- <button>Browse</button>
+ <button className="ourButton">Browse</button>
  </Link>
  <Link to='/about'>
- <button>About</button>
+ <button className="ourButton">About</button>
  </Link>
  </p>
  </div>

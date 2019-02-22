@@ -4,11 +4,15 @@ import PhotoThumb from './components/PhotoThumb.js';
 import PhotoBrowser from './components/PhotoBrowser.js';
 import Home from './components/Home.js';
 import About from './components/About.js';
-
+import 'bootstrap/dist/css/bootstrap.css';
 import * as cloneDeep from 'lodash/cloneDeep';
 import logo from './logo.svg';
 import './App.css';
 import { Route } from 'react-router-dom';
+import fontawesome from '@fortawesome/fontawesome'
+import faFreeSolid from '@fortawesome/fontawesome-free-solid'
+
+fontawesome.library.add(faFreeSolid)
 
 
 class App extends Component {
@@ -35,6 +39,17 @@ addPhotoToFavorites=(id) =>{
 	localStorage.setItem('favourites', JSON.stringify(this.state.favs));
     console.log("added to local storage");
 	console.log(localStorage.getItem('favourites'));
+}
+removePhotoFromFavorites = (id) =>{
+     let temp = this.state.favs;
+    var location = temp.indexOf(id);
+    temp.splice(location, 1);
+    this.setState({favs:temp});
+    localStorage.setItem('favourites', JSON.stringify(this.state.favs));
+    console.log("removed from local storage");
+	console.log(localStorage.getItem('favourites'));
+    
+    
 }
 updatePhoto = (id, photo) => {
  // Create deep clone of photo array from state.
@@ -85,7 +100,8 @@ if (localFavourites != null){
  photos={this.state.photos}
 favors={this.state.favs}
  updatePhoto={this.updatePhoto}
- addPhotoToFavorites={this.addPhotoToFavorites} /> }
+ addPhotoToFavorites={this.addPhotoToFavorites}
+      removePhotoFromFavorites={this.removePhotoFromFavorites}/> }
  />
      <Route path='/about' exact component={About} />
  </div>

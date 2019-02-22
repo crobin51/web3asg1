@@ -19,8 +19,8 @@ class PhotoThumb extends React.Component {
  <h3>{this.props.photo.title}</h3>
  <p>{this.props.photo.city},
  {this.props.photo.country}</p>
- <button onClick={ this.handleViewClick }>View</button> 
-    <button onClick={ this.addToFavoriteClick }>❤</button>
+ <button className="ourButton" onClick={ this.handleViewClick }>View</button> 
+    <button className="ourButton" onClick={ this.addToFavoriteClick }>❤</button>
  </div>
  </div>
  );

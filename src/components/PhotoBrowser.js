@@ -14,11 +14,14 @@ class PhotoBrowser extends React.Component {
   addToFavs = (id) => {
       this.props.addPhotoToFavorites(id);
 }
-    
+  removeFavs = (id) => {
+      this.props.removePhotoFromFavorites(id);
+            
+  }
  render() {
  return (
      <div>
-     <Favorites favs={this.props.favors} />
+     <Favorites favs={this.props.favors} removeFavs={this.removeFavs} />
  <section className="container">
      
  <PhotoList photos={this.props.photos} 

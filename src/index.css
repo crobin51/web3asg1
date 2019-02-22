@@ -58,7 +58,7 @@ code {
 .header p {
   margin: 0;
 }
-button {
+.ourButton {
   margin: 0 0.5rem;
   background: var(--button-back);
   border: 0;
