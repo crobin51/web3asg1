@@ -4,14 +4,32 @@ import * as JSZip from 'jszip';
 import {saveAs} from 'file-saver';
 import * as JSZipUtils from 'jszip-utils';
 class Favorites extends React.Component {
- render() {
+    constructor(props){
+        super(props);
+        this.state = {addClass: false};
+        
+    }
     
+ render() {
+     let favClass = ["favInfo"];
+     let download = "";
+     let iconClass = ["fa fa-download"];
+     let def = `Press ❤ to Save Your Favourite Photos!`;
+    if(this.props.favs.length>0){
+     def = "My Favorites";
+      favClass.push('visible');  
+        download = ` Download `;
+    }
  return (
+    
 <article className="favorites">
-     <div>❤ <p>Favorites</p></div>
+     
+ <p className="" id={favClass.join(' ')}>{def} </p>
+<div id="pList">
  { this.props.favs.map( (p) =>
- <FavoriteItem photo={p} key={this.props.id} removeFavs={this.props.removeFavs} /> )} 
-<p onClick={this.download}>Download</p>
+ <FavoriteItem  photo={p} key={this.props.id} removeFavs={this.props.removeFavs} /> )} 
+</div>
+<p  id="download" dangerouslySetInnerHTML={{__html: download}}onClick={this.download}></p>
  </article>
  );
  }

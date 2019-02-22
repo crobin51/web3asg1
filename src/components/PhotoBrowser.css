@@ -1,0 +1,14 @@
+#photoList{
+    margin-top:20px;
+ height: 750px;
+  overflow-y:scroll;
+    border-style: solid;
+  border-width: 3px;
+}
+.photoBrowser{
+    background: url('https://source.unsplash.com/1600x900') top left/cover no-repeat;
+}
+
+#test{
+    margin-left:15px;
+}

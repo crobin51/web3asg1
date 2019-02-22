@@ -24,6 +24,8 @@ class About extends React.Component {
 <tr><td>Bootstrap</td> <td>https://getbootstrap.com/docs/4.0/getting-started/download/</td> </tr>
 <tr><td>Unsplash</td> <td>https://source.unsplash.com</td> </tr>
 <tr><td>Font Awesome</td> <td>https://fontawesome.com/start</td> </tr>
+<tr><td>React Collapsible(Favourite Bar)</td> <td>https://www.npmjs.com/package/react-collapsible</td> </tr>
+<tr><td>Adding and Removing Classes</td> <td>https://codepen.io/JorgeGWD/pen/jYMVXY</td> </tr>
 </tbody>            
  </table>
 </div> </div>

@@ -19,7 +19,7 @@ removeFavsClick = () =>{
 
     
  render() {
-let favClass = ["favPic"];
+let favClass = ["favPic pListPhotos"];
 if(this.state.addClass) {
       favClass.push('hidden');
     }

@@ -79,9 +79,13 @@ code {
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
   grid-gap: 5px;
-  background-color: var(--list-back);
+  
 }
-
+#favInfo{
+    border-style:dashed;
+    width: 100px;
+    padding-left:2%;
+}
 .photoBox {
   display: grid;
   grid-template-columns: 110px 1fr;
@@ -121,7 +125,7 @@ img.photoThumb {
 }
 
 .details {
-  background-color: var(--details-back);
+  
   padding: 0.5em;
   width: 95%
 }
@@ -148,9 +152,10 @@ legend {
 
 .favorites {
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
+  
+    grid-template-columns:  10% 70% 15%;
   grid-auto-flow: column;
-
+  
   align-items: center;
   grid-gap: 5px;
   background: var(--favorites-back);
@@ -159,4 +164,18 @@ legend {
   font-size: 0.8em;
   font-weight: bold;
   text-transform: uppercase;
+}
+.visible{
+    visibility: hidden;
+    background: var(--favorites-back);
+}
+
+#pList{
+   overflow: auto;
+  white-space: nowrap;
+   display:inline-block; 
+    
+}
+.pListPhotos{
+    display:inline-block;
 }
