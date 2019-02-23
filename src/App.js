@@ -20,26 +20,10 @@ class App extends Component {
  super(props);
  this.state = { photos: [],
                 favs: [],
-               ogPhotos:[],
                flag: false
               };			  
 }
-filterBy=(filterName, type)=>{
-    let tempPhotos = cloneDeep(this.state.ogPhotos);
-     let newPhotos = [];
-    const regex = "^" + filterName.toUpperCase()
-    
-    if(type ==="City"){
-    newPhotos = tempPhotos.filter(t=>t.city.toUpperCase().match(regex));    
-    }else{
-        newPhotos = tempPhotos.filter(t=>t.country.toUpperCase().match(regex));    
-    }
-   
-    if(newPhotos.length >0){
-        this.setState({photos: newPhotos});
-    }
-   
-}
+
 addPhotoToFavorites=(id) =>{
     
     let temp = this.state.favs;
@@ -69,6 +53,17 @@ removePhotoFromFavorites = (id) =>{
     
     
 }
+deletePhoto = (id) =>{
+    let temp = this.state.photos;
+    var location = temp.findIndex(t=>t.id ===id);
+    
+    temp.splice(location, 1);
+       this.setState({photos:temp});
+    localStorage.setItem('favourites', JSON.stringify(this.state.favs));
+    console.log("removed from local storage");
+	console.log(localStorage.getItem('favourites'));
+    
+}
 updatePhoto = (id, photo) => {
  // Create deep clone of photo array from state.
  // We will use a lodash function for that task.
@@ -79,6 +74,9 @@ updatePhoto = (id, photo) => {
  photoToReplace.title = photo.title;
  photoToReplace.city = photo.city;
  photoToReplace.country = photo.country;
+ photoToReplace.description = photo.description;
+ photoToReplace.latitude = photo.latitude;
+ photoToReplace.longitude = photo.longitude;
  // update state
 this.setState( {photos: copyPhotos } );
 }
@@ -117,7 +115,7 @@ if (localFavourites != null){
  <Route path='/browse' exact
  render={ (props) =>
  <PhotoBrowser 
-filter={this.filterBy}
+deletePhoto={this.deletePhoto}
  photos={this.state.photos}
 favors={this.state.favs}
  updatePhoto={this.updatePhoto}

@@ -2,22 +2,45 @@ import React from "react";
 import './EditPhotoDetails.css';
 import * as cloneDeep from 'lodash/cloneDeep';
 class EditPhotoDetails extends React.Component {
+handleViewClick = () =>{
+    this.props.handleViewClick();
+}
+handleMapClick = () =>{
+    this.props.handleMapClick();
+}
 handleChange = e => {
  // find the current photo in our photo array
  const id = this.props.currentPhoto;
  const photo = this.props.photos.find( p => p.id === id);
+    const latRegex = /^-?([1-8]?[0-9]\.{1}\d{1,6}$|90\.{1}0{1,6}$)/;
+    const longRegex = /-?([1]?[1-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.{1}\d{1,6}/
+    const flag = true;
  // update the photo using these 3 steps ...
 
  // 1. make a clone of the current photo object
  const clonedPhoto = { ...photo };
+   
+if(e.currentTarget.name === "latitude" || e.currentTarget.name ==="longitude"){
+    
+    if (latRegex.test(e.target.value) || longRegex.test(e.target.value)) {
+        
+       
+    } else{
+        flag=false;
+    }
+}  
 
- // 2. update value of field that just changed
+   if(flag){
+            // 2. update value of field that just changed
  clonedPhoto[e.currentTarget.name] = e.currentTarget.value;
 
  // 3. tell parent (or above) to update the state for this photo
  this.props.updatePhoto(this.props.currentPhoto, clonedPhoto);
-}    
+       
+   }
+    
 
+}
 
  render() {
         
@@ -43,16 +66,36 @@ handleChange = e => {
  <input type='text' name='title'
  onChange={this.handleChange}
  value={photo.title} />
+      <label>Description</label>
+ <input type='text' name='description'
+ onChange={this.handleChange}
+ value={photo.description} />
  <label>City</label>
  <input type='text' name='city'
  onChange={this.handleChange}
  value={photo.city} />
+
  <label>Country</label>
  <input type='text' name='country'
  onChange={this.handleChange}
  value={photo.country} />
+    <div className="form-row align-items-center">
+    <div className="col-auto">
+      <label>Latitude</label>
+ <input type='text' name='latitude'
+ onChange={this.handleChange}
+ value={photo.latitude} />
+     </div>
+     <div class="col-auto">
+  <label>Longitude</label>
+ <input type='text' name='longitude'
+ onChange={this.handleChange}
+ value={photo.longitude} />
+     </div>
+     </div>
 </form>
-
+<button className="ourButton" onClick={ this.handleViewClick }>View</button> 
+     <button className="ourButton" onClick={this.handleMapClick}>Map</button>
  </div>
  </article>
  );

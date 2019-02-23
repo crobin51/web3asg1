@@ -87,6 +87,7 @@ code {
     padding-left:2%;
 }
 .photoBox {
+    position:relative;
   display: grid;
   grid-template-columns: 110px 1fr;
   grid-gap: 2px;
@@ -180,6 +181,7 @@ legend {
     display:inline-block;
 }
 #FilterBy{
+    margin-top:1.5%;
     background-color: aquamarine;
 }
 .favPic{
@@ -191,7 +193,7 @@ legend {
     width: 100%;
   height: auto;
 }
-#close{
+.delete{
     position: absolute;
   top: 7%;
   left: 91%;
@@ -200,13 +202,23 @@ legend {
  
 
 }
+.deletePhoto{
+    position: absolute;
+  top: 4.2%;
+  left: 97%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+ 
+
+}
 .hidden {
   visibility: hidden;
+     background-color: red;
   opacity: 0;
   transition: visibility 0s 1.5s, opacity 1.5s linear;
 }
 .elementToFadeInAndOut {
- 
+
     -webkit-animation: fadeinout 3s infinite forwards;
     animation: fadeinout 3s infinite forwards;
 }
@@ -219,4 +231,24 @@ legend {
 @keyframes fadeinout {
   0%,100% { opacity: 0; }
   50% { opacity: 1; }
+}
+#photoList{
+
+ height: 750px;
+  overflow-y:scroll;
+    border-style: solid;
+  border-width: 3px;
+}
+.photoBrowser{
+    background: url('https://source.unsplash.com/1600x900') top left/cover no-repeat;
+}
+
+#test{
+    margin-left:15px;
+}
+#map{
+     height: 450px;
+}
+#mapContianer{
+    height: 450px;
 }

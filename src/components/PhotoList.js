@@ -9,7 +9,9 @@ class PhotoList extends React.Component {
      
  { this.props.photos.map( (p) =>
  <PhotoThumb photo={p} key={p.id} 
-showImageDetails={this.props.showImageDetails} addToFavs={this.props.addToFavs} handleMap={this.props.handleMap} handleEdit={this.props.handleEdit}/> )} 
+
+showImageDetails={this.props.showImageDetails} viewDetails={this.props.showViewDetails} currentPhoto={this.props.currentPhoto} addToFavs={this.props.addToFavs} handleMap={this.props.handleMap} handleEdit={this.props.handleEdit} removePhoto={this.props.removePhoto} /> )} 
+
 
  </article>
  );

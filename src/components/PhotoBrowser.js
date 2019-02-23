@@ -3,14 +3,14 @@ import PhotoList from './PhotoList.js';
 import EditPhotoDetails from './EditPhotoDetails.js';
 import Favorites from './Favorites.js';
 import Collapsible from 'react-collapsible';
-import './PhotoBrowser.css';
 import PhotoHandler from './PhotoHandler.js';
+import * as cloneDeep from 'lodash/cloneDeep';
 
 class PhotoBrowser extends React.Component {
     constructor(props) {
  super(props);
 
- this.state = { currentPhoto: 1, photoOption: "", filterName: "City"};
+ this.state = { currentPhoto: 1, photoOption: "", filterName: "City", newPhotos:  cloneDeep(this.props.photos)};
 }
     showImageDetails = (id) => {
  this.setState({ currentPhoto: id });
@@ -31,8 +31,27 @@ class PhotoBrowser extends React.Component {
       
   }
   filter = (e) =>{
-    
-      this.props.filter(e.currentTarget.value, this.state.filterName);
+        let tempPhotos = cloneDeep(this.props.photos);
+      
+     let nPhotos = [];
+    const regex = "^" + e.currentTarget.value.toUpperCase()
+   
+    if(this.state.filterName ==="City"){
+    nPhotos = tempPhotos.filter(t=>t.city.toUpperCase().match(regex));    
+    }else{
+        nPhotos = tempPhotos.filter(t=>t.country.toUpperCase().match(regex));    
+    }
+
+    if(nPhotos.length >0){
+        console.log(nPhotos);
+        this.setState({newPhotos: nPhotos});
+    }
+  
+     
+      
+  }
+  removePhoto =(id) =>{
+      this.props.deletePhoto(id);
       
   }
 updateCurrent = (id) =>{
@@ -48,8 +67,14 @@ updateCurrent = (id) =>{
 	  this.setState({photoOption:"view"});
 
   }
+
  render() {
-    
+     let photos = [];
+    if(this.state.newPhotos.length > 0){
+        photos = this.state.newPhotos;
+    }else{
+        photos = this.props.photos;
+    }
      
      
  return (
@@ -70,15 +95,18 @@ updateCurrent = (id) =>{
 			</div>
 			<input type="text" className="form-control" onChange={this.filter} />
 		</div>
-		<div id="photoList" className="col-7"> 
- <PhotoList photos={this.props.photos} 
-     showImageDetails={this.showImageDetails} addToFavs={this.addToFavs} handleMap={this.handleMap} handleEdit={this.handleEdit} handleView={this.handleView}/> 
+		<div id="photoList" className="col-12"> 
+ <PhotoList photos={photos} 
+     showImageDetails={this.showImageDetails} showViewDetails={this.handleView} removePhoto={this.removePhoto} addToFavs={this.addToFavs} handleMap={this.handleMap}  currentPhoto={this.state.currentPhoto} handleEdit={this.handleEdit} handleView={this.handleView}/> 
 		</div>     
 	 </div>
 	 <div className="col-5" >
- <PhotoHandler photos={this.props.photos} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} photoOption={this.state.photoOption}/>
-     </div>
-	 </section>
+ <PhotoHandler photos={this.props.photos} showMap={this.handleMap} showViewDetails={this.handleView} showImageDetails={this.handleEdit} showImageDetails={this.handleEdit}updateCurrent={this.updateCurrent} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} photoOption={this.state.photoOption}/>
+
+
+ </div>
+     </section>
+
      </div>
 
  );

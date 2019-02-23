@@ -29,7 +29,7 @@ if(this.state.addClass) {
  <img src={imgURL} className="photoThumb"
  title={this.props.photo.title}
  alt={this.props.photo.title} />
-    <p onClick={this.removeFavsClick.bind(this)}>{this.state.addClass} <i className="fas fa-window-close" id="close"></i> </p>
+    <p onClick={this.removeFavsClick.bind(this)}>{this.state.addClass} <i className="fas fa-window-close delete" ></i> </p>
  </figure>
  
 

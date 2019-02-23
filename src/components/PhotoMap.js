@@ -3,9 +3,9 @@ import {GoogleApiWrapper, Map, Marker} from 'google-maps-react';
 
 const mapStyles={
 	map:{
-	position:'absolute',
+	
 	width: '100%',
-	height: '100%'
+	height: '200px'
 	}
 };
 export class PhotoMap extends React.Component {
@@ -26,8 +26,8 @@ export class PhotoMap extends React.Component {
 			 navigator.geolocation.getCurrentPosition(this.userLocation);
 		 }
 	return(
-	<div>
-	<div>
+	<div id ="mapContianer">
+	<div id="map">
 	 <Map
 		google = {this.props.google}
 		zoom={14}

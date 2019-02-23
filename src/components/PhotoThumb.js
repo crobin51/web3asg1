@@ -3,6 +3,7 @@ class PhotoThumb extends React.Component {
      constructor(props){
         super(props);
         this.state = {addClass: false,
+                      addEffect: false,
                     view: false};
         
     }
@@ -17,8 +18,8 @@ class PhotoThumb extends React.Component {
 removePhoto = () =>{
     this.setState({addClass: !this.state.addClass});
        setTimeout(()=>{
-           this.props.removeFavs(this.props.photo.id);
-           this.setState({addClass: false});
+           this.props.removePhoto(this.props.photo.id);
+           this.setState({addEffect: false});
        },1200);
     
     }
@@ -34,7 +35,12 @@ handleEditClick = () =>{
      if(this.state.view){
          photoClass.push('elementToFadeInAndOut');  
      }
-       if(this.props.currentPhoto != this.props.photo.id && photoClass.length > 1){
+     
+     if(this.state.addEffect){
+          photoClass.push('hidden');
+     }
+     
+     if(this.props.currentPhoto != this.props.photo.id && photoClass.length > 1){
            photoClass.splice(1,1); 
        }else if(this.props.currentPhoto === this.props.photo.id){
           photoClass.push('elementToFadeInAndOut');   
@@ -48,6 +54,7 @@ handleEditClick = () =>{
  <img src={imgURL} className="photoThumb"
  title={this.props.photo.title}
  alt={this.props.photo.title} />
+ <p onClick={this.removePhoto.bind(this)}>{this.state.addClass} <i className="fas fa-window-close deletePhoto" ></i> </p>
  </figure>
  <div>
  <h3>{this.props.photo.title}</h3>
