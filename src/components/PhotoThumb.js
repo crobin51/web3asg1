@@ -22,6 +22,12 @@ removePhoto = () =>{
        },1200);
     
     }
+handleMapClick = () =>{
+	this.props.handleMap();
+}
+handleEditClick = () =>{
+	this.props.handleEdit();
+}
  render() {
      let photoClass = ["photoBox"];
      
@@ -50,6 +56,8 @@ removePhoto = () =>{
 
  <button className="ourButton" onClick={ this.handleViewClick }>View</button> 
     <button className="ourButton" onClick={ this.addToFavoriteClick }>❤</button>
+	<button className="ourButton" onClick={this.handleMapClick}>Map</button>
+	<button className="ourButton" onClick={this.handleEditClick}>Edit</button>
  </div>
  </div>
  );

@@ -60,8 +60,7 @@ addPhotoToFavorites=(id) =>{
 }
 removePhotoFromFavorites = (id) =>{
      let temp = this.state.favs;
-    var location = temp.findIndex(t=>t.id ===id);
-    
+    var location = temp.indexOf(id);
     temp.splice(location, 1);
     this.setState({favs:temp});
     localStorage.setItem('favourites', JSON.stringify(this.state.favs));
