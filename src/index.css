@@ -179,3 +179,44 @@ legend {
 .pListPhotos{
     display:inline-block;
 }
+#FilterBy{
+    background-color: aquamarine;
+}
+.favPic{
+    position: relative;
+    
+
+}
+.favPic img{
+    width: 100%;
+  height: auto;
+}
+#close{
+    position: absolute;
+  top: 7%;
+  left: 91%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+ 
+
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1.5s, opacity 1.5s linear;
+}
+.elementToFadeInAndOut {
+ 
+    -webkit-animation: fadeinout 3s infinite forwards;
+    animation: fadeinout 3s infinite forwards;
+}
+
+@-webkit-keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}

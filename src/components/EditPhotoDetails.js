@@ -20,13 +20,19 @@ handleChange = e => {
 
 
  render() {
+        
  const id = this.props.currentPhoto;
  const imgURL =
  `https://storage.googleapis.com/funwebdev-3rd-travel/medium/`;
  // just in case, handle missing photos in the props
  if (this.props.photos.length > 0) {
  // find the photo object with this id
- const photo = this.props.photos.find( p => p.id === id);
+ let photo = this.props.photos.find( p => p.id === id);
+
+    if(photo === undefined){
+        photo = this.props.photos[0];
+        this.props.updateCurrent(photo.id);
+    }
  return (
  <article className="details">
  <div className="detailsPhotoBox">

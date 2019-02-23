@@ -19,8 +19,26 @@ class App extends Component {
     constructor(props) {
  super(props);
  this.state = { photos: [],
-                favs: []
+                favs: [],
+               ogPhotos:[],
+               flag: false
               };			  
+}
+filterBy=(filterName, type)=>{
+    let tempPhotos = cloneDeep(this.state.ogPhotos);
+     let newPhotos = [];
+    const regex = "^" + filterName.toUpperCase()
+    
+    if(type ==="City"){
+    newPhotos = tempPhotos.filter(t=>t.city.toUpperCase().match(regex));    
+    }else{
+        newPhotos = tempPhotos.filter(t=>t.country.toUpperCase().match(regex));    
+    }
+   
+    if(newPhotos.length >0){
+        this.setState({photos: newPhotos});
+    }
+   
 }
 addPhotoToFavorites=(id) =>{
     
@@ -74,6 +92,7 @@ this.setState( {photos: copyPhotos } );
  const response = await fetch(url);
  const jsonData = await response.json();
  this.setState( {photos: jsonData } );
+this.setState({ogPhotos: jsonData});
  }
  catch (error) {
  console.error(error);
@@ -89,6 +108,7 @@ if (localFavourites != null){
 
 
   render() {
+   
     return (
       <div>
        <HeaderApp />
@@ -97,7 +117,8 @@ if (localFavourites != null){
  <Route path='/home' exact component={Home} />
  <Route path='/browse' exact
  render={ (props) =>
- <PhotoBrowser
+ <PhotoBrowser 
+filter={this.filterBy}
  photos={this.state.photos}
 favors={this.state.favs}
  updatePhoto={this.updatePhoto}

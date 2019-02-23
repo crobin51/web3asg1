@@ -8,7 +8,11 @@ import './PhotoBrowser.css';
 class PhotoBrowser extends React.Component {
     constructor(props) {
  super(props);
- this.state = { currentPhoto: 1 };
+ this.state = { currentPhoto: 1,
+                filterName: "City"
+              
+              };
+
 }
     showImageDetails = (id) => {
  this.setState({ currentPhoto: id });
@@ -20,21 +24,54 @@ class PhotoBrowser extends React.Component {
       this.props.removePhotoFromFavorites(id);
             
   }
+  changeFilterType = () =>{
+      if(this.state.filterName ==="City"){
+          this.setState({filterName: "Country"});
+      }else{
+       this.setState({filterName: "City"});   
+      }
+      
+  }
+  filter = (e) =>{
+    
+      this.props.filter(e.currentTarget.value, this.state.filterName);
+      
+  }
+updateCurrent = (id) =>{
+      this.setState({currentPhoto: id});
+  }
  render() {
+    
+     
+     
  return (
      <div className="photoBrowser">
      
      <Collapsible  trigger={<div className="favorites"> Favorites  <i className="fa fa-angle-double-down" aria-hidden="true"></i> </div>}>
      <Favorites favs={this.props.favors} removeFavs={this.removeFavs} />
      </Collapsible>
+    
  <section id="test" className="row">
+     <div id="FilterBy" className="col-7">
+     <p className="h2">Filter By: </p>
+     <div className="input-group mb-3">
+  <div className="input-group-prepend">
+      <span className="input-group-text">{this.state.filterName}</span>
+    <div className="input-group-text">
+      <input type="checkbox" onChange={this.changeFilterType}  aria-label="Checkbox for following text input"/>
+    </div>
+  </div>
+  <input type="text" className="form-control" onChange={this.filter} />
+</div>
+     </div>
      <div id="photoList" className="col-7">
- <PhotoList photos={this.props.photos} 
+ <PhotoList photos={this.props.photos}  currentPhoto={this.state.currentPhoto}
      showImageDetails={this.showImageDetails} addToFavs={this.addToFavs}/> 
 </div>     
 <div className="col-5" >
 <EditPhotoDetails
  photos={this.props.photos}
+     updateCurrent={this.updateCurrent} 
  currentPhoto={this.state.currentPhoto}
  updatePhoto={this.props.updatePhoto} />
  </div>
