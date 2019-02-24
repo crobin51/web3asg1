@@ -58,7 +58,7 @@ code {
 .header p {
   margin: 0;
 }
-button {
+.ourButton {
   margin: 0 0.5rem;
   background: var(--button-back);
   border: 0;
@@ -77,18 +77,23 @@ button {
 
 .photos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-columns: repeat(auto-fit, 280px);
   grid-gap: 5px;
-  background-color: var(--list-back);
+  
 }
-
+#favInfo{
+    border-style:dashed;
+    width: 100px;
+    padding-left:2%;
+}
 .photoBox {
+    position:relative;
   display: grid;
   grid-template-columns: 110px 1fr;
-  grid-gap: 2px;
+  grid-gap: 3px;
 
   background-color: var(--list-box-back);
-  margin: 0.75rem;
+  margin: 0.80rem;
   padding: 0.5rem;
   place-self: center center;
   justify-content: space-evenly;
@@ -97,9 +102,12 @@ button {
 }
 .photoBox button {
   padding: 5px;
+    margin: auto;
   font-size: 0.75em;
   border-radius: 3px;
-  margin: 0;
+    
+    
+ 
 }
 .photoBox h3 {
   font-size: 0.85em;
@@ -121,7 +129,7 @@ img.photoThumb {
 }
 
 .details {
-  background-color: var(--details-back);
+  
   padding: 0.5em;
   width: 95%
 }
@@ -148,9 +156,10 @@ legend {
 
 .favorites {
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
+  
+    grid-template-columns:  10% 70% 15%;
   grid-auto-flow: column;
-
+  
   align-items: center;
   grid-gap: 5px;
   background: var(--favorites-back);
@@ -159,4 +168,93 @@ legend {
   font-size: 0.8em;
   font-weight: bold;
   text-transform: uppercase;
+}
+.visible{
+    visibility: hidden;
+    background: var(--favorites-back);
+}
+
+#pList{
+   overflow: auto;
+  white-space: nowrap;
+   display:inline-block; 
+    
+}
+.pListPhotos{
+    display:inline-block;
+}
+#FilterBy{
+    margin-top:1.5%;
+    background-color: var(--details-box-back);
+}
+.favPic{
+    position: relative;
+    
+
+}
+.favPic img{
+    width: 100%;
+  height: auto;
+}
+.delete{
+    position: absolute;
+  top: 7%;
+  left: 91%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+ 
+
+}
+.deletePhoto{
+    position: absolute;
+  top: 4.2%;
+  left: 97%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+ 
+
+}
+
+.hidden {
+  visibility: hidden;
+     
+  opacity: 0;
+  transition: visibility 0s 1.5s, opacity 1.5s linear;
+}
+.photoSelected {
+    box-shadow: 10px 10px;
+}
+
+#photoList{
+
+ height: 750px;
+  overflow-y:scroll;
+    border-style: solid;
+  border-width: 3px;
+}
+.photoBrowser{
+    background: url('https://source.unsplash.com/1600x900') top left/cover no-repeat;
+}
+
+#test{
+    margin-left:15px;
+}
+#map{
+    margin-top:4%;
+    padding-top:2%;
+  margin-left: 2%;
+    margin-right: auto;
+     height: 400px;
+}
+#mapInfo{
+    padding-top:2%;
+    text-align: center;
+}
+#mapContianer{
+  width: 600px;
+    background-color: var(--details-box-back);
+  
+}
+photoBox i{
+    padding-right:23%;
 }
