@@ -10,7 +10,7 @@ class About extends React.Component {
           <h1>About Us</h1>
           <h3>COMP 4513 Assignment 1</h3>
           <h3> By Cryston Robin & Sam Osman</h3>
-        
+			<p>A photo gallery application built using React.js</p>
             <table className="table table-bordered table-dark"
               style={{ marginTop: "5%" }}>
               <thead>
@@ -81,6 +81,30 @@ class About extends React.Component {
 				<tr>
 				<td>Monkey Logo</td>
 				<td>https://i.pinimg.com/originals/32/f8/b7/32f8b76bccfb76f944e37ee6d007c40a.png</td>
+				</tr>
+				<tr>
+				<td>Lodash library</td>
+				<td>https://www.npmjs.com/package/lodash</td>
+				</tr>
+				<tr>
+				<td>JSZip library</td>
+				<td>https://www.npmjs.com/package/jszip</td>
+				</tr>
+				<tr>
+				<td>JSZip-utils library</td>
+				<td>https://www.npmjs.com/package/jszip-utils</td>
+				</tr>
+				<tr>
+				<td>Google-Maps-React library</td>
+				<td>https://www.npmjs.com/package/google-maps-react</td>
+				</tr>
+				<tr>
+				<td>File-Saver library</td>
+				<td>https://www.npmjs.com/package/file-saver</td>
+				</tr>
+				<tr>
+				<td>React-Router library</td>
+				<td>https://www.npmjs.com/package/react-router</td>
 				</tr>
               </tbody>
       </div>
