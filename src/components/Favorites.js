@@ -11,12 +11,10 @@ class Favorites extends React.Component {
 
   render() {
     let favClass = ["favInfo"];
-    let download = "";
       let def = `Press ❤ to Save Your Favourite Photos!`;
     if (this.props.favs.length > 0) {
       def = "My Favorites";
       favClass.push("visible");
-      download = ` Download `;
     }
     return (
       <article className="favorites">
@@ -32,13 +30,19 @@ class Favorites extends React.Component {
             />
           ))}
         </div>
-        <p
-          id="download"
-          dangerouslySetInnerHTML={{ __html: download }}
-          onClick={this.download}
-        />
+		{this.downloadButtonRender()}
       </article>
     );
+  }
+  
+  downloadButtonRender = () => {
+	  if(!this.props.favs.length <= 0){
+		  return(
+		  <button className='ourButton' onClick={this.download}><i className="fas fa-download"></i> Download</button>
+		  );
+	  }else{
+		  return null;
+	  }
   }
 
   download = () => {
