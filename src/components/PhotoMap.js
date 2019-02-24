@@ -44,30 +44,7 @@ export class PhotoMap extends React.Component {
                   title={photo.title}
                 />
               </Map>
-           <div id="userContainer">
-            <h3> Your Location </h3>
-             <div id="map2" >
-              <Map
-                google={this.props.google}
-                zoom={14}
-                style={mapStyles}
-                initialCenter={{
-                  lat: this.userLat,
-                  lng: this.userLong
-                }}
-                center={{
-                  lat: this.userLat,
-                  lng: this.userLong
-                }}
-              >
-                <Marker
-                  name="You Are Here"
-                  position={{ lat: this.userLat, lng: this.userLong }}
-                  title="You Are Here"
-                />
-              </Map>
-            </div>
-            </div>
+			  {this.userMapRender()}
             </div>
 
             <div id="mapInfo">
@@ -106,6 +83,38 @@ export class PhotoMap extends React.Component {
     } else {
       return null;
     }
+  }
+  userMapRender = () =>{
+	  if(this.userLat != null && this.userLong != null){
+	  return(
+	  <div id="userContainer">
+            <h5> Your Location </h5>
+             <div id="map2" >
+              <Map
+                google={this.props.google}
+                zoom={14}
+                style={mapStyles}
+                initialCenter={{
+                  lat: this.userLat,
+                  lng: this.userLong
+                }}
+                center={{
+                  lat: this.userLat,
+                  lng: this.userLong
+                }}
+              >
+                <Marker
+                  name="You Are Here"
+                  position={{ lat: this.userLat, lng: this.userLong }}
+                  title="You Are Here"
+                />
+              </Map>
+            </div>
+            </div>
+			);
+	  }else{
+		  return null;
+	  }
   }
   userLocation = position => {
     this.userLat = position.coords.latitude;

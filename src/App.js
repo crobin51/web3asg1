@@ -5,7 +5,6 @@ import Home from './components/Home.js';
 import About from './components/About.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import * as cloneDeep from 'lodash/cloneDeep';
-import logo from './logo.svg';
 import './App.css';
 import { Route } from 'react-router-dom';
 import fontawesome from '@fortawesome/fontawesome'

@@ -78,6 +78,10 @@ class About extends React.Component {
                   <td>Lat/Long Distance Formula</td>
                   <td>https://www.movable-type.co.uk/scripts/latlong.html</td>
                 </tr>
+				<tr>
+				<td>Monkey Logo</td>
+				<td>https://i.pinimg.com/originals/32/f8/b7/32f8b76bccfb76f944e37ee6d007c40a.png</td>
+				</tr>
               </tbody>
       </div>
             </table>
