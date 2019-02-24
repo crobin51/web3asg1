@@ -109,7 +109,7 @@ class PhotoBrowser extends React.Component {
                 onChange={this.filter}
               />
             </div>
-            <div id="photoList" className="col-12">
+            <div id="photoList" className="col-12 ">
               <PhotoList
                 photos={photos}
                 showImageDetails={this.showImageDetails}

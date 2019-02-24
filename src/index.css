@@ -16,7 +16,7 @@
   --details-back: #feffff;
   --details-box-back: #def2f1;
   --header-back: #17252A;
-  --button-back: #3aafa9;
+  --button-back: #DEA985;
   --border-color: #c2dde6;
   --list-box-back: #feffff;
 }
@@ -203,6 +203,7 @@ legend {
 }
 /*Delete Icon for the Favorite Photos*/
 .delete{
+    opacity: 0;
     position: absolute;
   top: 7%;
   left: 91%;
@@ -211,18 +212,27 @@ legend {
  
 
 }
+.delete:hover{
+  opacity: 1;
+  transition:  opacity 0.8s linear;
+}
 /*Delete Icon for the PhotoThumbs*/
 .deletePhoto{
+   opacity: 0;
     position: absolute;
   top: 4.2%;
   left: 97%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
+.deletePhoto:hover{
+opacity: 1;
+  transition:  opacity 0.8s linear;
+}
 /*Deletion effect for deleting a favorite photo */
 .hidden {
   visibility: hidden;     
-  opacity: 0;
+  opacity: 1;
   transition: visibility 0s 1.5s, opacity 1.5s linear;
 }
 /*Shadow effect for when a PhotoThumb is selected*/
@@ -246,31 +256,53 @@ legend {
 }
 /*Styling for the maps */
 #map{
+  
     margin-top:4%;
     padding-top:2%;
-  
+     
     margin-right: auto;
      height: 400px;
 }
 #map2{
-    border-style:solid;
-    margin-top:49%;
-      outline-offset: 5%;
-   
+ z-index: 2;
      height: 150px;
+
 }
 #mapInfo{
     padding-top:2%;
     text-align: center;
 }
+#userContainer{
+     position:absolute;
+     z-index: 3;
+    width:150px;
+    height:150px;
+    border-style:solid;
+    margin-top:46%;
+   
+}
+#userContainer h3{
+position:absolute;
+     z-index: 5;
+}
 #mapContianer{
+   
   width: 600px;
     background-color: var(--details-box-back);
   
 }
-/*Styling for the View State Imagge */
+/*Styling for the View State Image */
+
 #viewImage img{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
     width: 450px;
 }
 
+/*About Us Styling*/
+.aboutUs{
+  height:350px;
+    overflow:auto;
+}
 

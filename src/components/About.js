@@ -10,15 +10,17 @@ class About extends React.Component {
           <h1>About Us</h1>
           <h3>COMP 4513 Assignment 1</h3>
           <h3> By Cryston Robin & Sam Osman</h3>
-          <div class="table-wrapper-scroll-y">
+        
             <table className="table table-bordered table-dark"
               style={{ marginTop: "5%" }}>
               <thead>
                 <tr>
-                  <th scope="col">Source Name</th>
-                  <th scope="col">Link</th>
+                  <th >Source Name</th>
+                  <th >Link</th>
                 </tr>
               </thead>
+            <div className="aboutUs">
+        
               <tbody>
                 <tr>
                   <td>Bootstrap</td>{" "}
@@ -77,10 +79,11 @@ class About extends React.Component {
                   <td>https://www.movable-type.co.uk/scripts/latlong.html</td>
                 </tr>
               </tbody>
+      </div>
             </table>
           </div>{" "}
         </div>
-      </div>
+     
     );
   }
 }

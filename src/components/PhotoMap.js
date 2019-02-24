@@ -44,8 +44,9 @@ export class PhotoMap extends React.Component {
                   title={photo.title}
                 />
               </Map>
-            <div id="map2" className="col-3">
-            <div > 
+           <div id="userContainer">
+            <h3> Your Location </h3>
+             <div id="map2" >
               <Map
                 google={this.props.google}
                 zoom={14}

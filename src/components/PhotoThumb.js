@@ -35,7 +35,7 @@ class PhotoThumb extends React.Component {
     this.props.handleEdit();
   };
   render() {
-    let photoClass = ["photoBox"];
+    let photoClass = ["photoBox rounded"];
 
     if (this.state.view) {
       if (photoClass.indexOf("photoSelected") === -1) {
