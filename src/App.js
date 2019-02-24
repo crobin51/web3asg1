@@ -59,6 +59,11 @@ deletePhoto = (id) =>{
     
     temp.splice(location, 1);
        this.setState({photos:temp});
+    
+    let favsTemp = this.state.favs;
+    let favlocal = favsTemp.findIndex(t=>t.id ===id);
+    favsTemp.splice(favlocal, 1);
+    this.setState({favs:favsTemp});
     localStorage.setItem('favourites', JSON.stringify(this.state.favs));
     console.log("removed from local storage");
 	console.log(localStorage.getItem('favourites'));

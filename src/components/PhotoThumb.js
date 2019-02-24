@@ -3,7 +3,7 @@ class PhotoThumb extends React.Component {
      constructor(props){
         super(props);
         this.state = {addClass: false,
-                      addEffect: false,
+                     
                     view: false};
         
     }
@@ -19,7 +19,7 @@ removePhoto = () =>{
     this.setState({addClass: !this.state.addClass});
        setTimeout(()=>{
            this.props.removePhoto(this.props.photo.id);
-           this.setState({addEffect: false});
+           this.setState({addClass: false});
        },1200);
     
     }
@@ -33,17 +33,22 @@ handleEditClick = () =>{
      let photoClass = ["photoBox"];
      
      if(this.state.view){
-         photoClass.push('elementToFadeInAndOut');  
+         if (photoClass.indexOf("photoSelected") ===-1){
+             photoClass.push('photoSelected');  
+         }
+         
      }
      
-     if(this.state.addEffect){
+     if(this.state.addClass){
           photoClass.push('hidden');
      }
      
      if(this.props.currentPhoto != this.props.photo.id && photoClass.length > 1){
            photoClass.splice(1,1); 
        }else if(this.props.currentPhoto === this.props.photo.id){
-          photoClass.push('elementToFadeInAndOut');   
+            if (photoClass.indexOf("photoSelected") ===-1){
+             photoClass.push('photoSelected');  
+         } 
        }
      
   
@@ -62,9 +67,13 @@ handleEditClick = () =>{
  {this.props.photo.country}</p>
 
  <button className="ourButton" onClick={ this.handleViewClick }>View</button> 
+
+	<button className="ourButton" onClick={this.handleMapClick}><i className="fas fa-map-marker-alt"></i>Map</button>
+        <div id="quickEdit">
+	<button className="ourButton" onClick={this.handleEditClick}><i className="fas fa-edit"></i> 
+Edit</button>
     <button className="ourButton" onClick={ this.addToFavoriteClick }>❤</button>
-	<button className="ourButton" onClick={this.handleMapClick}>Map</button>
-	<button className="ourButton" onClick={this.handleEditClick}>Edit</button>
+</div>
  </div>
  </div>
  );

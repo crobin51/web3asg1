@@ -77,7 +77,7 @@ code {
 
 .photos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-columns: repeat(auto-fit, 280px);
   grid-gap: 5px;
   
 }
@@ -90,10 +90,10 @@ code {
     position:relative;
   display: grid;
   grid-template-columns: 110px 1fr;
-  grid-gap: 2px;
+  grid-gap: 3px;
 
   background-color: var(--list-box-back);
-  margin: 0.75rem;
+  margin: 0.80rem;
   padding: 0.5rem;
   place-self: center center;
   justify-content: space-evenly;
@@ -102,9 +102,12 @@ code {
 }
 .photoBox button {
   padding: 5px;
+    margin: auto;
   font-size: 0.75em;
   border-radius: 3px;
-  margin: 0;
+    
+    
+ 
 }
 .photoBox h3 {
   font-size: 0.85em;
@@ -182,7 +185,7 @@ legend {
 }
 #FilterBy{
     margin-top:1.5%;
-    background-color: aquamarine;
+    background-color: var(--details-box-back);
 }
 .favPic{
     position: relative;
@@ -211,27 +214,17 @@ legend {
  
 
 }
+
 .hidden {
   visibility: hidden;
-     background-color: red;
+     
   opacity: 0;
   transition: visibility 0s 1.5s, opacity 1.5s linear;
 }
-.elementToFadeInAndOut {
-
-    -webkit-animation: fadeinout 3s infinite forwards;
-    animation: fadeinout 3s infinite forwards;
+.photoSelected {
+    box-shadow: 10px 10px;
 }
 
-@-webkit-keyframes fadeinout {
-  0%,100% { opacity: 0; }
-  50% { opacity: 1; }
-}
-
-@keyframes fadeinout {
-  0%,100% { opacity: 0; }
-  50% { opacity: 1; }
-}
 #photoList{
 
  height: 750px;
@@ -247,8 +240,21 @@ legend {
     margin-left:15px;
 }
 #map{
-     height: 450px;
+    margin-top:4%;
+    padding-top:2%;
+  margin-left: 2%;
+    margin-right: auto;
+     height: 400px;
+}
+#mapInfo{
+    padding-top:2%;
+    text-align: center;
 }
 #mapContianer{
-    height: 450px;
+  width: 600px;
+    background-color: var(--details-box-back);
+  
+}
+photoBox i{
+    padding-right:23%;
 }

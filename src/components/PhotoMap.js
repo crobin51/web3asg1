@@ -27,7 +27,7 @@ export class PhotoMap extends React.Component {
 		 }
 	return(
 	<div id ="mapContianer">
-	<div id="map">
+	<div id="map" className="col-11">
 	 <Map
 		google = {this.props.google}
 		zoom={14}
@@ -47,7 +47,7 @@ export class PhotoMap extends React.Component {
 		</Map>
 		</div>
 		
-		<div>
+		<div id="mapInfo">
 		<h1>Distance to User Location</h1>
 		<h2>{this.calculateDistance(this.userLat, this.userLong, photo.latitude, photo.longitude)}</h2>
 		</div>
