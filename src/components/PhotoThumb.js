@@ -8,6 +8,7 @@ class PhotoThumb extends React.Component {
         
     }
     handleViewClick = () => {
+		console.log("handle view click");
         this.setState({view:true});
  this.props.showImageDetails(this.props.photo.id);
 }
@@ -23,7 +24,11 @@ removePhoto = () =>{
        },1200);
     
     }
+	handleViewButtonClick = () => {
+		this.props.viewDetails();
+	}
 handleMapClick = () =>{
+	console.log("handle map click");
 	this.props.handleMap();
 }
 handleEditClick = () =>{
@@ -66,7 +71,7 @@ handleEditClick = () =>{
  <p>{this.props.photo.city},
  {this.props.photo.country}</p>
 
- <button className="ourButton" onClick={ this.handleViewClick }>View</button> 
+ <button className="ourButton" onClick={ this.handleViewButtonClick }>View</button> 
 
 	<button className="ourButton" onClick={this.handleMapClick}><i className="fas fa-map-marker-alt"></i>Map</button>
         <div id="quickEdit">

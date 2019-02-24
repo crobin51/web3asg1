@@ -13,18 +13,19 @@ export class PhotoMap extends React.Component {
 	userLong = null;
     constructor(props) {
  super(props);
- this.state =  {userLat: 0, userLong:0};
+}
+componentDidMount(){
+if(navigator.geolocation){
+	 navigator.geolocation.getCurrentPosition(this.userLocation);
+		 }
 }
 //https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react
  render() {
+	  //https://alligator.io/js/geolocation-api/
 	 if(this.props.photos.length>0){
 		 const id = this.props.currentPhoto;
 		 const photo = this.props.photos.find( p => p.id === id);
 		 if(photo!= null){
-		 //https://alligator.io/js/geolocation-api/
-	if(navigator.geolocation){
-			 navigator.geolocation.getCurrentPosition(this.userLocation);
-		 }
 	return(
 	<div id ="mapContianer">
 	<div id="map" className="col-11">
@@ -51,6 +52,31 @@ export class PhotoMap extends React.Component {
 		<h1>Distance to User Location</h1>
 		<h2>{this.calculateDistance(this.userLat, this.userLong, photo.latitude, photo.longitude)}</h2>
 		</div>
+		
+		<div id="map" className="col-11">
+	 <Map
+		google = {this.props.google}
+		zoom={14}
+		style={mapStyles}
+		initialCenter={{
+			lat: this.userLat, lng:this.userLong}}
+		center={{
+			lat: this.userLat, lng: this.userLong}}
+		>
+			<Marker
+			name= "You Are Here"
+			position = {{lat: this.userLat, lng: this.userLong}}
+			title="You Are Here"
+			/>
+		
+		</Map>
+		</div>
+		
+		<div>
+		<button className='ourButton' onClick={this.props.handleViewClick}>View</button>
+		<button className='ourButton' onClick={this.props.handleEditClick}>Edit</button>
+		</div>
+		
 		</div>
 	);
 		 }else{
@@ -65,8 +91,9 @@ export class PhotoMap extends React.Component {
 	 this.userLong= position.coords.longitude;
 	 console.log(this.userLat);
 	 console.log(this.userLong);
+	 this.forceUpdate();
  }
- calculateDistance = (userLat, userLong, photoLat, photoLong) =>{
+  calculateDistance = (userLat, userLong, photoLat, photoLong) =>{
 	 //https://www.movable-type.co.uk/scripts/latlong.html
 	 if(this.userLat != null && this.userLong != null){
 	 let R = 6371e3; // metres
@@ -85,7 +112,7 @@ let a = Math.sin(latDiff/2) * Math.sin(latDiff/2) +
         Math.sin(longDiff/2) * Math.sin(longDiff/2);
 let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 console.log(R*c/1000);
-return R * c /1000 +'KM';
+return (R * c /1000).toFixed(2) +'KM';
 	 }else{
 		 return "Allow Location Services to use this feature";
 	 }

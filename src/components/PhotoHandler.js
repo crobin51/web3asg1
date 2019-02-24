@@ -24,11 +24,11 @@ class PhotoHandler extends React.Component {
      
  }
  render() {
-	if(this.props.photoOption == 'editPhoto' || this.props.photoOption == ''){
+	if(this.props.photoOption == 'editPhoto'){
 		return this.renderEditPhoto();
 	}else if(this.props.photoOption == 'map'){
 		return this.renderMap();
-	}else if(this.props.photoOption == 'view'){
+	}else if(this.props.photoOption == 'view'|| this.props.photoOption == ''){
 		return this.renderView();
 	}
  }
@@ -36,6 +36,7 @@ class PhotoHandler extends React.Component {
       const imgURL =
  `https://storage.googleapis.com/funwebdev-3rd-travel/medium/`;
      let photo = this.props.photos.find( p => p.id === this.props.currentPhoto);
+	 if(photo != null){
 	 return (
      <article className="details">
           <div className="detailsPhotoBox">
@@ -47,14 +48,17 @@ class PhotoHandler extends React.Component {
      <button className="ourButton" onClick={this.handleMapClick}>Map</button>
          </div>
       </article>
-     );
+	  );
+	 }else{
+		 return null;
+	 }
  }
  renderMap(){
 	 const id = this.props.currentPhoto;
 	 const photo = this.props.photos.find( p => p.id === id);
 	 console.log(photo);
 	 return(
- <PhotoMap photos={this.props.photos} currentPhoto={this.props.currentPhoto}/>
+ <PhotoMap photos={this.props.photos} currentPhoto={this.props.currentPhoto} handleViewClick={this.handleViewClick} handleEditClick={this.handleEditClick}/>
 	 );
  }
  renderEditPhoto(){

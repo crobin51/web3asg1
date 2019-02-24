@@ -101,7 +101,7 @@ updateCurrent = (id) =>{
 		</div>     
 	 </div>
 	 <div className="col-5" >
- <PhotoHandler photos={this.props.photos} showMap={this.handleMap} showViewDetails={this.handleView} showImageDetails={this.handleEdit} showImageDetails={this.handleEdit}updateCurrent={this.updateCurrent} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} photoOption={this.state.photoOption}/>
+ <PhotoHandler photos={this.props.photos} showMap={this.handleMap} showViewDetails={this.handleView} showImageDetails={this.handleEdit}updateCurrent={this.updateCurrent} currentPhoto={this.state.currentPhoto} updatePhoto={this.props.updatePhoto} photoOption={this.state.photoOption}/>
 
 
  </div>
