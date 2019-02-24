@@ -25,7 +25,9 @@ if(e.currentTarget.name === "latitude"  ){
              
           } else {
     if(parseFloat(e.target.value) <= 90 && parseFloat(e.target.value) >= -90){
-         if(regex.test(e.target.value)){
+        if(e.target.value[e.target.value.length -1] === "." && e.target.value.split(".").length-1 === 1){
+           
+           }else if(regex.test(e.target.value)){
                   
               }else{
                   flag=false; 
@@ -37,7 +39,9 @@ if(e.currentTarget.name === "latitude"  ){
               }
     
 }else if(e.currentTarget.name ==="longitude"){
-           if(e.target.value ==="" || e.target.value==="-"){
+            if(e.target.value[e.target.value.length -1] === "." && e.target.value.split(".").length-1 === 1){
+           
+           }else if(e.target.value ==="" || e.target.value==="-"){
              
           } else {
     if(parseFloat(e.target.value) <= 180 && parseFloat(e.target.value) >= -180){
