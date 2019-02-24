@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import HeaderApp from './components/HeaderApp.js';
-import PhotoThumb from './components/PhotoThumb.js';
 import PhotoBrowser from './components/PhotoBrowser.js';
 import Home from './components/Home.js';
 import About from './components/About.js';
@@ -44,7 +43,7 @@ addPhotoToFavorites=(id) =>{
 }
 removePhotoFromFavorites = (id) =>{
      let temp = this.state.favs;
-    var location = temp.indexOf(id);
+        var location = temp.findIndex(t=>t.id ===id);
     temp.splice(location, 1);
     this.setState({favs:temp});
     localStorage.setItem('favourites', JSON.stringify(this.state.favs));

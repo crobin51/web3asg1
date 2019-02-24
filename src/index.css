@@ -1,3 +1,5 @@
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Original Stylings from the Lab START<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
 /* purple + orange + blues
  :root {
   --list-back: #bccbde;
@@ -105,9 +107,7 @@ code {
     margin: auto;
   font-size: 0.75em;
   border-radius: 3px;
-    
-    
- 
+
 }
 .photoBox h3 {
   font-size: 0.85em;
@@ -169,33 +169,39 @@ legend {
   font-weight: bold;
   text-transform: uppercase;
 }
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Original Stylings from the Lab END<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+/*Used to hide the initial Favorites divs with no photos saved.  */
 .visible{
     visibility: hidden;
     background: var(--favorites-back);
 }
-
+/*The PhotoList Div */
 #pList{
    overflow: auto;
   white-space: nowrap;
    display:inline-block; 
     
 }
+/*The PhotoThumbs*/
 .pListPhotos{
     display:inline-block;
 }
+/*Styling for the FilterBy Title*/
 #FilterBy{
     margin-top:1.5%;
     background-color: var(--details-box-back);
 }
+/*Styling for the Favorite Photo */
 .favPic{
     position: relative;
-    
-
 }
+/*Styling for the Favorite Photo, specfically the img*/
 .favPic img{
     width: 100%;
   height: auto;
 }
+/*Delete Icon for the Favorite Photos*/
 .delete{
     position: absolute;
   top: 7%;
@@ -205,46 +211,53 @@ legend {
  
 
 }
+/*Delete Icon for the PhotoThumbs*/
 .deletePhoto{
     position: absolute;
   top: 4.2%;
   left: 97%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
- 
-
 }
-
+/*Deletion effect for deleting a favorite photo */
 .hidden {
-  visibility: hidden;
-     
+  visibility: hidden;     
   opacity: 0;
   transition: visibility 0s 1.5s, opacity 1.5s linear;
 }
+/*Shadow effect for when a PhotoThumb is selected*/
 .photoSelected {
     box-shadow: 10px 10px;
 }
 
 #photoList{
-
  height: 750px;
   overflow-y:scroll;
     border-style: solid;
   border-width: 3px;
 }
+/*Sets the background for the Photo Browser */
 .photoBrowser{
     background: url('https://source.unsplash.com/1600x900') top left/cover no-repeat;
 }
-
-#test{
+/*Moves the main section over*/
+#mainSection{
     margin-left:15px;
 }
+/*Styling for the maps */
 #map{
     margin-top:4%;
     padding-top:2%;
-  margin-left: 2%;
+  
     margin-right: auto;
      height: 400px;
+}
+#map2{
+    border-style:solid;
+    margin-top:49%;
+      outline-offset: 5%;
+   
+     height: 150px;
 }
 #mapInfo{
     padding-top:2%;
@@ -255,6 +268,9 @@ legend {
     background-color: var(--details-box-back);
   
 }
-photoBox i{
-    padding-right:23%;
+/*Styling for the View State Imagge */
+#viewImage img{
+    width: 450px;
 }
+
+
