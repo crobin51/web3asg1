@@ -3,7 +3,7 @@ import React from "react";
 class FavoriteItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { addClass: false };
+    this.state = { addClass: false, addDelete: false };
   }
 
   removeFavsClick = () => {
@@ -13,24 +13,41 @@ class FavoriteItem extends React.Component {
       this.setState({ addClass: false });
     }, 1200);
   };
-
+toggleDelete = () =>{
+    if(this.state.addDelete){
+        this.setState({addDelete: false});
+    }else{
+        this.setState({addDelete: true});
+    }
+    
+}
   render() {
-    let favClass = ["favPic pListPhotos"];
+      let deleteFavorite = ["deleteFav"]
+    let favClass = ["favPic", "pListPhotos"];
     if (this.state.addClass) {
       favClass.push("hidden");
     }
+       if(this.state.addDelete){
+           deleteFavorite.splice(0,1);
+          deleteFavorite.push("showFavDelete");
+         
+      }else{
+             deleteFavorite.splice(0,1);
+          deleteFavorite.push("deleteFav");
+         
+      }
     const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/square-medium/${
       this.props.photo.path
     }`;
     return (
-      <figure className={favClass.join(" ")}>
+      <figure onMouseEnter={this.toggleDelete} onMouseLeave={this.toggleDelete} className={favClass.join(" ")}>
         <img
           src={imgURL}
           className="photoThumb"
           title={this.props.photo.title}
           alt={this.props.photo.title}
         />
-        <p onClick={this.removeFavsClick.bind(this)}>
+        <p className={deleteFavorite.join(" ")} onClick={this.removeFavsClick.bind(this)}>
           {this.state.addClass} <i className="fas fa-window-close delete" />{" "}
         </p>
       </figure>

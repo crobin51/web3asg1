@@ -1,7 +1,6 @@
 import React from "react";
 import "./Home.css";
 
-
 class About extends React.Component {
   render() {
     return (
@@ -10,17 +9,20 @@ class About extends React.Component {
           <h1>About Us</h1>
           <h3>COMP 4513 Assignment 1</h3>
           <h3> By Cryston Robin & Sam Osman</h3>
+
 			<p>A photo gallery application built using React.js</p>
-            <table className="table table-bordered table-dark"
-              style={{ marginTop: "5%" }}>
+          <table
+            className="table table-bordered table-dark"
+            style={{ marginTop: "5%" }}          >
+            <div className="aboutUs">
+
+        
               <thead>
                 <tr>
-                  <th >Source Name</th>
-                  <th >Link</th>
+                  <th>Source Name</th>
+                  <th>Link</th>
                 </tr>
               </thead>
-            <div className="aboutUs">
-        
               <tbody>
                 <tr>
                   <td>Bootstrap</td>{" "}
@@ -107,11 +109,10 @@ class About extends React.Component {
 				<td>https://www.npmjs.com/package/react-router</td>
 				</tr>
               </tbody>
+            </div>
+          </table>
+        </div>{" "}
       </div>
-            </table>
-          </div>{" "}
-        </div>
-     
     );
   }
 }

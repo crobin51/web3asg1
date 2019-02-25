@@ -60,12 +60,14 @@ deletePhoto = (id) =>{
     
     let favsTemp = this.state.favs;
     let favlocal = favsTemp.findIndex(t=>t.id ===id);
+    
+    if(favlocal !==-1){
     favsTemp.splice(favlocal, 1);
     this.setState({favs:favsTemp});
     localStorage.setItem('favourites', JSON.stringify(this.state.favs));
     console.log("removed from local storage");
 	console.log(localStorage.getItem('favourites'));
-    
+    }
 }
 updatePhoto = (id, photo) => {
  // Create deep clone of photo array from state.

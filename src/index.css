@@ -93,7 +93,7 @@ code {
   display: grid;
   grid-template-columns: 110px 1fr;
   grid-gap: 3px;
-
+opacity: 1;
   background-color: var(--list-box-back);
   margin: 0.80rem;
   padding: 0.5rem;
@@ -103,10 +103,12 @@ code {
 
 }
 .photoBox button {
+    width:45px ;
   padding: 5px;
     margin: auto;
   font-size: 0.75em;
   border-radius: 3px;
+    
 
 }
 .photoBox h3 {
@@ -202,8 +204,8 @@ legend {
   height: auto;
 }
 /*Delete Icon for the Favorite Photos*/
-.delete{
-    opacity: 0;
+.deleteFav{
+      opacity: 0;
     position: absolute;
   top: 7%;
   left: 91%;
@@ -212,10 +214,17 @@ legend {
  
 
 }
-.delete:hover{
-  opacity: 1;
-  transition:  opacity 0.8s linear;
+.showFavDelete{
+    opacity: 1;
+    position: absolute;
+  top: 7%;
+  left: 91%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+ 
+
 }
+
 /*Delete Icon for the PhotoThumbs*/
 .deletePhoto{
    opacity: 0;
@@ -225,19 +234,26 @@ legend {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-.deletePhoto:hover{
+.showPhoto{
 opacity: 1;
-  transition:  opacity 0.8s linear;
+        position: absolute;
+  top: 4.2%;
+  left: 97%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+ 
 }
-/*Deletion effect for deleting a favorite photo */
-.hidden {
-  visibility: hidden;     
-  opacity: 1;
-  transition: visibility 0s 1.5s, opacity 1.5s linear;
-}
+
 /*Shadow effect for when a PhotoThumb is selected*/
 .photoSelected {
     box-shadow: 10px 10px;
+}
+
+/*Deletion effect for deleting a favorite photo */
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
 }
 
 #photoList{
@@ -304,5 +320,8 @@ position:absolute;
 .aboutUs{
   height:350px;
     overflow:auto;
+}
+#quickEdit{
+    margin-top:5%;
 }
 
