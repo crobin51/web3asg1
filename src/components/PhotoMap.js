@@ -10,9 +10,9 @@ const mapStyles = {
 export class PhotoMap extends React.Component {
   userLat = null;
   userLong = null;
-   componentDidMount() {
+   componentDidMount() { //ideally want to check for user location coordinates after the initial render, and component is mounted.
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.userLocation);
+      navigator.geolocation.getCurrentPosition(this.userLocation); //update userLat and userLong with the coordinates from geolocation api
     }
   }
   //https://scotch.io/tutorials/react-apps-with-the-google-maps-api-and-google-maps-react
@@ -20,8 +20,8 @@ export class PhotoMap extends React.Component {
     //https://alligator.io/js/geolocation-api/
     if (this.props.photos.length > 0) {
       const id = this.props.currentPhoto;
-      const photo = this.props.photos.find(p => p.id === id);
-      if (photo != null) {
+      const photo = this.props.photos.find(p => p.id === id); //find the photo that the user currently selected
+      if (photo != null) { //check if photo is null just in case we somehow arrive here with no photo actually selected
         return (
           <div id="mapContianer">
             <div id="map" className="col-11">
@@ -44,13 +44,15 @@ export class PhotoMap extends React.Component {
                   title={photo.title}
                 />
               </Map>
-			  {this.userMapRender()}
+			  {this.userMapRender() 
+			  //return a map with user location on it
+			  }
             </div>
 
             <div id="mapInfo">
               <h1>Distance to User Location</h1>
               <h2>
-                {this.calculateDistance(
+                {this.calculateDistance( //calculate the distance from the photo location to user location
                   this.userLat,
                   this.userLong,
                   photo.latitude,
@@ -85,7 +87,7 @@ export class PhotoMap extends React.Component {
     }
   }
   userMapRender = () =>{
-	  if(this.userLat != null && this.userLong != null){
+	  if(this.userLat != null && this.userLong != null){ //only return map with user location if we have coordinates available
 	  return(
 	  <div id="userContainer">
             <h5> Your Location </h5>
@@ -116,16 +118,16 @@ export class PhotoMap extends React.Component {
 		  return null;
 	  }
   }
-  userLocation = position => {
+  userLocation = position => { //callback function for geolocation api, update the user latitude and longitude values
     this.userLat = position.coords.latitude;
     this.userLong = position.coords.longitude;
     console.log(this.userLat);
     console.log(this.userLong);
-    this.forceUpdate();
+    this.forceUpdate(); //force the component to re-render to show the distance between locations, and the user location map
   };
-  calculateDistance = (userLat, userLong, photoLat, photoLong) => {
+  calculateDistance = (userLat, userLong, photoLat, photoLong) => { //calculate the distance between user's location and photo location
     //https://www.movable-type.co.uk/scripts/latlong.html
-    if (this.userLat != null && this.userLong != null) {
+    if (this.userLat != null && this.userLong != null) { //only perform the calculation if we have user coordinates
       let R = 6371e3; // metres
       console.log(userLat);
       console.log(userLong);
@@ -145,12 +147,12 @@ export class PhotoMap extends React.Component {
           Math.sin(longDiff / 2);
       let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       console.log((R * c) / 1000);
-      return ((R * c) / 1000).toFixed(2) + "KM";
+      return ((R * c) / 1000).toFixed(2) + "KM"; //convert the distance to kilometers, and only return up to 2 decimal places.
     } else {
       return "Allow Location Services to use this feature";
     }
   };
-  toRadians(number) {
+  toRadians(number) { //helper function to convert degrees to radians.
     return (number * Math.PI) / 180;
   }
 }

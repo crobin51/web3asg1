@@ -15,19 +15,19 @@ class PhotoHandler extends React.Component {
   handleViewClick = () => {
     this.props.showViewDetails();
   };
-  render() {
+  render() {//depending on which photoOption is clicked (the view, map, edit buttons), call the appropriate function
     if (this.props.photoOption === "editPhoto") {
       return this.renderEditPhoto();
     } else if (this.props.photoOption === "map") {
       return this.renderMap();
-    } else if (
+    } else if ( //view is the default component rendered.
       this.props.photoOption === "view" ||
       this.props.photoOption === ""
     ) {
       return this.renderView();
     }
   }
-  renderView() {
+  renderView() { //this returns the view component, when "view" button is clicked
     const imgURL = `https://storage.googleapis.com/funwebdev-3rd-travel/medium/`;
     let photo = this.props.photos.find(p => p.id === this.props.currentPhoto);
     if (photo != null) {
@@ -53,7 +53,7 @@ class PhotoHandler extends React.Component {
       return null;
     }
   }
-  renderMap() {
+  renderMap() { //this returns the map component when "map" button is clicked
     const id = this.props.currentPhoto;
     const photo = this.props.photos.find(p => p.id === id);
     console.log(photo);
@@ -66,7 +66,7 @@ class PhotoHandler extends React.Component {
       />
     );
   }
-  renderEditPhoto() {
+  renderEditPhoto() { //this returns the editPhoto component when "edit" button is clicked
     return (
       <div>
         <EditPhotoDetails

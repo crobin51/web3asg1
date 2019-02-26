@@ -12,7 +12,7 @@ class Favorites extends React.Component {
   render() {
     let favClass = ["favInfo"];
       let def = `Press ❤ to Save Your Favourite Photos!`;
-    if (this.props.favs.length > 0) {
+    if (this.props.favs.length > 0) { //if the favourites array is populated
       def = "My Favorites";
       favClass.push("visible");
     }
@@ -35,7 +35,7 @@ class Favorites extends React.Component {
     );
   }
   
-  downloadButtonRender = () => {
+  downloadButtonRender = () => { //return a download button if favourites array is populated
 	  if(!this.props.favs.length <= 0){
 		  return(
 		  <button className='ourButton' onClick={this.download}><i className="fas fa-download"></i> Download</button>
@@ -53,19 +53,19 @@ class Favorites extends React.Component {
     console.log("download function");
     if (!this.props.favs.length <= 0) {
       let zip = new JSZip();
-      this.getImageUrls(zip);
+      this.getImageUrls(zip); 
     }
   };
 
   getImageBytes(url) {
     return new Promise(function(resolve, reject) {
-      JSZipUtils.getBinaryContent(url, (err, data) => {
+      JSZipUtils.getBinaryContent(url, (err, data) => { //get the binary data of the image from the url provided.
         if (err) {
           reject(err);
         } else {
           console.log("img bytes success");
           console.log(data);
-          resolve(data);
+          resolve(data); //successfully return the binary data
         }
       });
     });
@@ -74,14 +74,22 @@ class Favorites extends React.Component {
   getImageUrls(zip) {
     this.props.favs.forEach(p => {
       console.log(p.path);
+	  //https://cors-anywhere.herokuapp.com is a proxy that lets us bypass CORS restrictions.
+	  //this is not the best practice, but for the purpose of this assignment and resources available, we feel this is the best work-around.
       let imgUrl = `https://cors-anywhere.herokuapp.com/https://storage.googleapis.com/funwebdev-3rd-travel/large/${
         p.path
       }`;
-      zip.file(p.title + ".jpg", this.getImageBytes(imgUrl), { binary: true });
+	  let imgData = this.getImageBytes(imgUrl);
+	  imgData.catch(function(error){ //if the promise is rejected.
+		  alert(`Your download has failed for ${p.title}, sorry!`);
+		  
+	  });
+	  console.log(imgData);
+      zip.file(p.title + ".jpg", imgData, { binary: true }); //get the binary data of each image, and add it to the zip file
     });
-    zip.generateAsync({ type: "blob" }).then(function(content) {
+    zip.generateAsync({ type: "blob" }).then(function(content) { //when the zip file is finished constructing, it will automatically download.
       console.log("download here");
-      saveAs(content, "favouriteImages.zip");
+      saveAs(content, "favouriteImages.zip"); //this is the function that actually starts the download.
     });
   }
 }
