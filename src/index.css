@@ -137,7 +137,9 @@ img.photoThumb {
 }
 .detailsPhotoBox {
   box-sizing: border-box;
-  margin: 0.75em;
+  margin: 0.65em;
+    margin-top:2.7%;
+  
  
   padding: 1em;
   background-color: var(--details-box-back)
@@ -192,6 +194,7 @@ legend {
 /*Styling for the FilterBy Title*/
 #FilterBy{
     margin-top:1.5%;
+    padding-top:0.5%;
     background-color: var(--details-box-back);
 }
 /*Styling for the Favorite Photo */
@@ -261,10 +264,11 @@ opacity: 1;
 }
 
 #photoList{
- height: 750px;
+ height: 800px;
   overflow-y:scroll;
-    border-style: solid;
+      border-style: solid;
   border-width: 3px;
+  
 }
 /*Sets the background for the Photo Browser */
 .photoBrowser{
@@ -272,6 +276,7 @@ opacity: 1;
 }
 /*Moves the main section over*/
 #mainSection{
+    
     margin-left:15px;
 }
 /*Styling for the maps */
