@@ -103,11 +103,10 @@ toggleDelete = () =>{
           </button>
 
           <button className="ourButton" onClick={this.handleMapClick}>
-            <i className="fas fa-map-marker-alt" />Map
+              Map
           </button>
           <div id="quickEdit">
             <button className="ourButton" onClick={this.handleEditClick}>
-              <i className="fas fa-edit" />
               Edit
             </button>
             <button className="ourButton" onClick={this.addToFavoriteClick}>

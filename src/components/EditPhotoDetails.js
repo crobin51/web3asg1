@@ -1,3 +1,5 @@
+//This componenet handles editing photos and their information. 
+
 import React from "react";
 import "./EditPhotoDetails.css";
 class EditPhotoDetails extends React.Component {

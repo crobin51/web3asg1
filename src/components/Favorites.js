@@ -1,3 +1,5 @@
+//This componenet has all the list of Favorite Items. It handles the downloads and zipping of a user's favorite photos. 
+
 import React from "react";
 import FavoriteItem from "./FavoriteItem.js";
 import * as JSZip from "jszip";

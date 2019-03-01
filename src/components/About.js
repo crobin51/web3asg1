@@ -1,3 +1,5 @@
+//This componenet contains the information about the application. All of our sources are stored here. 
+
 import React from "react";
 import "./Home.css";
 

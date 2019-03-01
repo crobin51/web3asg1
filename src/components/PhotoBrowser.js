@@ -1,3 +1,5 @@
+//This componenet handles the Browse View of the application. 
+
 import React from "react";
 import PhotoList from "./PhotoList.js";
 import Favorites from "./Favorites.js";
@@ -49,6 +51,7 @@ class PhotoBrowser extends React.Component {
       this.setState({ newPhotos: nPhotos });
     }
   };
+
   removePhoto = id => {
     this.props.deletePhoto(id);
   };

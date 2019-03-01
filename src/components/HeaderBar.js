@@ -1,3 +1,4 @@
+//This componenet displays the Header Bar and the Logo.
 import React from "react";
 import logo from '../logo.png';
 const HeaderBar = function(props) {

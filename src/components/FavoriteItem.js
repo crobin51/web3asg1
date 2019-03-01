@@ -1,3 +1,5 @@
+//This class contains all information for a single Favorite item. It handles the item itself, deletion, and its animations. 
+
 import React from "react";
 
 class FavoriteItem extends React.Component {

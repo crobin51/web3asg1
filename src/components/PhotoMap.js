@@ -1,3 +1,4 @@
+//The PhotoMap componenet handles the GPS and Geotracking of photos. 
 import React from "react";
 import { GoogleApiWrapper, Map, Marker } from "google-maps-react";
 
@@ -63,7 +64,7 @@ export class PhotoMap extends React.Component {
 
             
 
-            <div>
+            <div className="mapButtons">
               <button
                 className="ourButton"
                 onClick={this.props.handleViewClick}

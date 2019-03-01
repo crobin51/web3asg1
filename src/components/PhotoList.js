@@ -1,3 +1,4 @@
+//The PhotoList Componenet contains a list of PhotoThumbs
 import React from "react";
 import PhotoThumb from "./PhotoThumb.js";
 class PhotoList extends React.Component {

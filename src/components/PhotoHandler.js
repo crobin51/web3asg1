@@ -1,3 +1,4 @@
+//The Photo Handler componenet handles the seperate views on the right side of the Browse View. 
 import React from "react";
 import EditPhotoDetails from "./EditPhotoDetails.js";
 import PhotoMap from "./PhotoMap.js";
@@ -33,7 +34,7 @@ class PhotoHandler extends React.Component {
     if (photo != null) {
       return (
         <article className="details ">
-          <div className="detailsPhotoBox col-11">
+          <div className="detailsPhotoBox">
           <figure id="viewImage"> 
             <img src={imgURL + photo.path} alt={photo.title} />
           </figure>

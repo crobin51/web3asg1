@@ -1,3 +1,4 @@
+//This componenet handles the Header displayed on each page. 
 import React from "react";
 
 import HeaderBar from "./HeaderBar.js";
